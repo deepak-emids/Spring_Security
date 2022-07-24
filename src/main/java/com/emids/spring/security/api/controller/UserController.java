@@ -29,9 +29,4 @@ public class UserController {
         return savedAdminDto;
     }
 
-    @GetMapping()
-    public List<UserDto> getAllUser() {
-        List<User> savedAdmin = (List<User>) userServiceImpl.getAllUser();
-        return converter.userListToUserDtoList(savedAdmin);
-    }
 }

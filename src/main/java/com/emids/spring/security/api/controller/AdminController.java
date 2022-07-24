@@ -1,13 +1,10 @@
 package com.emids.spring.security.api.controller;
 
+import com.emids.spring.security.api.dto.UserDto;
 import com.emids.spring.security.api.dtoConverter.DtoConverter;
 import com.emids.spring.security.api.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.emids.spring.security.api.model.User;
 
 import javax.validation.Valid;
@@ -30,29 +27,9 @@ public class AdminController {
         return savedAdminDto;
     }
 
+    @GetMapping()
+    public List<UserDto> getAllUser() {
+        List<User> savedAdmin = (List<User>) userServiceImpl.getAllUser();
+        return converter.userListToUserDtoList(savedAdmin);
+    }
 }
-
-//    @Autowired
-//    private UserRepository userRepository;
-//
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
-//
-//    /*@PreAuthorize("hasAnyRole('ADMIN')")*/
-//    @PostMapping()
-//    public String addUserByAdmin(@RequestBody User user) {
-//
-//        String pwd = user.getPassword();
-//        String encryptPwd = passwordEncoder.encode(pwd);
-//        user.setPassword(encryptPwd);
-//        userRepository.save(user);
-//        return "user added successfully...";
-//    }
-//
-//    @PreAuthorize("hasAnyRole('ADMIN')")
-//    @GetMapping()
-//    public String securedHello() {
-//
-//        return "Secured Hello";
-//    }
-//}
