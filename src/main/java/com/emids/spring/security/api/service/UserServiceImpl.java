@@ -24,20 +24,6 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private DtoConverter converter;
 
-
-    @Override
-    public User addUser(UserDto user) {
-        String pwd = user.getPassword();
-        String encryptPwd = passwordEncoder.encode(pwd);
-
-        user.setPassword(encryptPwd);
-        user.setRole(roleType.USER);
-
-        User converted = converter.dtoToUser(user);
-        userRepository.save(converted);
-        return converted;
-    }
-
     @Override
     public User addAdmin(UserDto user) {
         String pwd = user.getPassword();
@@ -47,6 +33,12 @@ public class UserServiceImpl implements IUserService {
         User converted = converter.dtoToUser(user);
         userRepository.save(converted);
         return converted;
+    }
+
+    @Override
+    public User getUser(int id) {
+        User user = userRepository.findById(id).get();
+        return user;
     }
 
     @Override

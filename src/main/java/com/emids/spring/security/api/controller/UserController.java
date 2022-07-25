@@ -22,11 +22,11 @@ public class UserController {
     @Autowired
     private DtoConverter converter;
 
-    @PostMapping()
-    public UserDto addUser(@Valid @RequestBody UserDto user) {
-        User savedAdmin = userServiceImpl.addUser(user);
-        UserDto savedAdminDto = converter.userToDto(savedAdmin);
-        return savedAdminDto;
+    @GetMapping()
+    public UserDto getUser(@Valid int id) {
+        User foundUser = userServiceImpl.getUser(id);
+        UserDto user = converter.userToDto(foundUser);
+        return user;
     }
 
 }

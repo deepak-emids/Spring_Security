@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IUserService {
     User addAdmin(UserDto user);
-    User addUser(UserDto user);
+    User getUser(int id);
     List<User> getAllUser();
 
 }
