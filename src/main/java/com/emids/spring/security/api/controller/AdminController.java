@@ -32,4 +32,5 @@ public class AdminController {
         List<User> savedAdmin = (List<User>) userServiceImpl.getAllUser();
         return converter.userListToUserDtoList(savedAdmin);
     }
+
 }

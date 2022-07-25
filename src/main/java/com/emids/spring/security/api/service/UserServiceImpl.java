@@ -50,25 +50,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Optional<User> getUser(int id) {
-        Optional<User> user = userRepository.findById(id);
-        return user;
-    }
-
-    @Override
     public List<User> getAllUser() {
         List<User> userList = userRepository.findAll();
 
         return userList;
-    }
-
-    @Override
-    public User updateUser() {
-        return null;
-    }
-
-    @Override
-    public void deleteUser() {
-
     }
 }

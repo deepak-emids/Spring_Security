@@ -21,13 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
-        CustomUserDetails userDetails = null;
+        CustomUserDetails customUserDetails = null;
         if (user != null) {
-            userDetails = new CustomUserDetails();
-            userDetails.setUser(user);
+            customUserDetails = new CustomUserDetails();
+            customUserDetails.setUser(user);
         } else {
             throw new UsernameNotFoundException("User not exist with name : " + username);
         }
-        return userDetails;
+        return customUserDetails;
     }
 }
